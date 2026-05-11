@@ -3,7 +3,7 @@ package com.doom.section10_lists.practice.mobile_phone_app;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class MobilePhone {
+public class MobilePhone {
     private final String myNumber;
     private final List<Contact> myContacts;
 

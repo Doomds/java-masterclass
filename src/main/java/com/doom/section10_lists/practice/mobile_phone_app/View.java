@@ -4,9 +4,13 @@ import java.util.Scanner;
 
 public class View {
     private static Scanner scanner = new Scanner(System.in);
-    static void main(String[] args) {
+    public static void main(String[] args) {
 
-        printActionMenu();
+        System.out.println("Welcome to the mobile phone app!");
+        System.out.println("Please enter your number: ");
+        MobilePhone mobilePhone = new MobilePhone(scanner.nextLine());
+
+        actionMenu(mobilePhone);
 
     }
 
@@ -23,16 +27,36 @@ public class View {
         System.out.println(text);
     }
 
-    private static void actionMenu() {
+    private static void actionMenu(MobilePhone mobilePhone) {
 
         boolean flag = true;
 
         do {
             printActionMenu();
             switch (Integer.parseInt(scanner.nextLine())) {
-                case 1: MobilePhone.
+                case 0:
+                    System.out.println("Bye bye");
+                    flag = false;
+                    break;
+                case 1: mobilePhone.addNewContact(askToAddContact()); break;
+                case 2: mobilePhone.updateContact(askToUpdateContact()); break;
+                default:
+                    System.out.println("Mauvais encodage.");
             }
         } while(flag);
+    }
+
+    private static Contact askToAddContact() {
+        System.out.println("Veuillez entrer le nom du contact :");
+        String name = scanner.nextLine();
+        System.out.println("Veuillez entrer le numéro du contact :");
+        String phoneNumber = scanner.nextLine();
+        return Contact.createContact(name, phoneNumber);
+    }
+
+    private static Contact askToUpdateContact() {
+        System.out.println("Veuillez entrer le nom du contact :");
+        String name = scanner.nextLine();
     }
 
 }
