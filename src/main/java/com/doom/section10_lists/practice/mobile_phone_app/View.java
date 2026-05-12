@@ -39,11 +39,45 @@ public class View {
                     flag = false;
                     break;
                 case 1: mobilePhone.addNewContact(askToAddContact()); break;
-                case 2: mobilePhone.updateContact(askToUpdateContact()); break;
+                case 2: askToUpdateContact(mobilePhone); break;
+                case 3: askToShowContact(mobilePhone); break;
+                case 4: askToRemoveContact(mobilePhone); break;
                 default:
                     System.out.println("Mauvais encodage.");
             }
         } while(flag);
+    }
+
+    private static void askToRemoveContact(MobilePhone mobilePhone) {
+        System.out.println("Quel est le nom du contact que vous voulez supprimer ?");
+        String name = scanner.nextLine();
+
+        Contact foundContact = mobilePhone.queryContact(name);
+
+        if (foundContact == null) {
+            System.out.println("Le Contact n'existe pas");
+        } else  {
+            if(mobilePhone.removeContact(foundContact)) {
+                System.out.println("Contact supprimé avec succès !");
+            } else {
+                System.out.println("Erreur lors de la suppression.");
+            }
+        }
+    }
+
+    private static void askToShowContact(MobilePhone mobilePhone) {
+        System.out.println("Quel est le nom du contact que vous voulez voir ?");
+        String name = scanner.nextLine();
+
+        Contact foundContact = mobilePhone.queryContact(name);
+
+        if (foundContact == null) {
+            System.out.println("Le Contact n'existe pas");
+        } else  {
+            System.out.printf("Nom : %s | Téléphone : %s",
+                    foundContact.getName(),
+                    foundContact.getPhoneNumber());
+        }
     }
 
     private static Contact askToAddContact() {
@@ -54,9 +88,26 @@ public class View {
         return Contact.createContact(name, phoneNumber);
     }
 
-    private static Contact askToUpdateContact() {
+    private static void askToUpdateContact(MobilePhone mobilePhone) {
         System.out.println("Veuillez entrer le nom du contact :");
         String name = scanner.nextLine();
-    }
 
+        Contact oldContact = mobilePhone.queryContact(name);
+        if (oldContact == null) {
+            System.out.println("le contact n'existe pas");
+            return;
+        }
+
+        System.out.println("Veuillez entrer le nouveau nom du contact :");
+        String newName = scanner.nextLine();
+        System.out.println("Veuillez entrer le nouveau numéro du contact :");
+        String newPhoneNumber = scanner.nextLine();
+        Contact newContact = Contact.createContact(newName, newPhoneNumber);
+
+        if (mobilePhone.updateContact(oldContact, newContact)) {
+            System.out.println("Contact updated");
+        } else  {
+            System.out.println("Contact not updated");
+        }
+    }
 }
