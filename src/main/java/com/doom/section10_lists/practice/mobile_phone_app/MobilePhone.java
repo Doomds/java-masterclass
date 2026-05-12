@@ -61,7 +61,7 @@ public class MobilePhone {
         System.out.println("Contact List:");
         for (int i = 0; i < myContacts.size(); i++) {
             Contact contact = myContacts.get(i);
-            System.out.printf("%d. %s -> %s%n", (i+1), contact.getName(), contact.getPhoneNumber());
+            System.out.printf("%d. %s -> %s%n", (i + 1), contact.getName(), contact.getPhoneNumber());
         }
     }
 }

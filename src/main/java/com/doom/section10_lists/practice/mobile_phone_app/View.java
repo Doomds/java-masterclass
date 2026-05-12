@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class View {
     private static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
 
         System.out.println("Welcome to the mobile phone app!");
@@ -11,10 +12,10 @@ public class View {
         MobilePhone mobilePhone = new MobilePhone(scanner.nextLine());
 
         actionMenu(mobilePhone);
-
     }
 
     private static void printActionMenu() {
+
         String text = """
                 Contact app
                 0 - quitter l'application
@@ -24,13 +25,13 @@ public class View {
                 4 - supprimer un contact
                 5 - afficher la liste de contacts
                 """;
+
         System.out.println(text);
     }
 
     private static void actionMenu(MobilePhone mobilePhone) {
 
         boolean flag = true;
-
         do {
             printActionMenu();
             switch (Integer.parseInt(scanner.nextLine())) {
@@ -38,17 +39,29 @@ public class View {
                     System.out.println("Bye bye");
                     flag = false;
                     break;
-                case 1: mobilePhone.addNewContact(askToAddContact()); break;
-                case 2: askToUpdateContact(mobilePhone); break;
-                case 3: askToShowContact(mobilePhone); break;
-                case 4: askToRemoveContact(mobilePhone); break;
+                case 1:
+                    mobilePhone.addNewContact(askToAddContact());
+                    break;
+                case 2:
+                    askToUpdateContact(mobilePhone);
+                    break;
+                case 3:
+                    askToShowContact(mobilePhone);
+                    break;
+                case 4:
+                    askToRemoveContact(mobilePhone);
+                    break;
+                case 5:
+                    mobilePhone.printContacts();
+                    break;
                 default:
                     System.out.println("Mauvais encodage.");
             }
-        } while(flag);
+        } while (flag);
     }
 
     private static void askToRemoveContact(MobilePhone mobilePhone) {
+
         System.out.println("Quel est le nom du contact que vous voulez supprimer ?");
         String name = scanner.nextLine();
 
@@ -56,8 +69,8 @@ public class View {
 
         if (foundContact == null) {
             System.out.println("Le Contact n'existe pas");
-        } else  {
-            if(mobilePhone.removeContact(foundContact)) {
+        } else {
+            if (mobilePhone.removeContact(foundContact)) {
                 System.out.println("Contact supprimé avec succès !");
             } else {
                 System.out.println("Erreur lors de la suppression.");
@@ -66,6 +79,7 @@ public class View {
     }
 
     private static void askToShowContact(MobilePhone mobilePhone) {
+
         System.out.println("Quel est le nom du contact que vous voulez voir ?");
         String name = scanner.nextLine();
 
@@ -73,7 +87,7 @@ public class View {
 
         if (foundContact == null) {
             System.out.println("Le Contact n'existe pas");
-        } else  {
+        } else {
             System.out.printf("Nom : %s | Téléphone : %s",
                     foundContact.getName(),
                     foundContact.getPhoneNumber());
@@ -81,14 +95,17 @@ public class View {
     }
 
     private static Contact askToAddContact() {
+
         System.out.println("Veuillez entrer le nom du contact :");
         String name = scanner.nextLine();
         System.out.println("Veuillez entrer le numéro du contact :");
         String phoneNumber = scanner.nextLine();
+
         return Contact.createContact(name, phoneNumber);
     }
 
     private static void askToUpdateContact(MobilePhone mobilePhone) {
+
         System.out.println("Veuillez entrer le nom du contact :");
         String name = scanner.nextLine();
 
@@ -106,7 +123,7 @@ public class View {
 
         if (mobilePhone.updateContact(oldContact, newContact)) {
             System.out.println("Contact updated");
-        } else  {
+        } else {
             System.out.println("Contact not updated");
         }
     }
