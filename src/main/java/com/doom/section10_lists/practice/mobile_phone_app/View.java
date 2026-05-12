@@ -3,6 +3,7 @@ package com.doom.section10_lists.practice.mobile_phone_app;
 import java.util.Scanner;
 
 public class View {
+
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -17,6 +18,7 @@ public class View {
     private static void printActionMenu() {
 
         String text = """
+                
                 Contact app
                 0 - quitter l'application
                 1 - ajouter un contact
