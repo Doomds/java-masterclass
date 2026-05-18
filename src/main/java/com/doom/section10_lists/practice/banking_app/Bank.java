@@ -26,7 +26,15 @@ public class Bank {
                 return customer;
             }
         }
-        System.out.printf("Customer not found");
+        System.out.print("Customer not found");
         return null;
+    }
+
+    public void addNewCustomer(String customerName, double initialDeposit) {
+        if (getCustomer(customerName) == null) {
+            Customer customer = new Customer(customerName, initialDeposit);
+            customers.add(customer);
+            System.out.println("New customer added to the list: " + customer);
+        }
     }
 }
