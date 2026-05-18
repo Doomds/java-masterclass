@@ -5,11 +5,10 @@ import java.util.List;
 
 public class Bank {
     private String name;
-    private List<Customer> customers;
+    private List<Customer> customers = new ArrayList<>(5000);
 
     public Bank(String name) {
         this.name = name;
-        customers = new ArrayList<>();
     }
 
     public void addCustomer(Customer customer) {
@@ -19,5 +18,15 @@ public class Bank {
             customers.add(customer);
             System.out.println("customer added to the list");
         }
+    }
+
+    private Customer getCustomer(String customerName) {
+        for (Customer customer : customers) {
+            if (customer.name().equalsIgnoreCase(customerName)) {
+                return customer;
+            }
+        }
+        System.out.printf("Customer not found");
+        return null;
     }
 }
