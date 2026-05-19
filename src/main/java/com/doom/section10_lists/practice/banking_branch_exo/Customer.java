@@ -1,4 +1,4 @@
-package com.doom.section10_lists.practice.bankin_branch_exo;
+package com.doom.section10_lists.practice.banking_branch_exo;
 
 import java.util.ArrayList;
 
