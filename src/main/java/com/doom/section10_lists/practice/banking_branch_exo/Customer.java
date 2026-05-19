@@ -12,4 +12,16 @@ public class Customer {
         this.transactions = new ArrayList<>(500);
         transactions.add(initialDeposit);
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<Double> getTransactions() {
+        return transactions;
+    }
+
+    public void addTransaction(double transaction) {
+        transactions.add(transaction);
+    }
 }
