@@ -6,7 +6,7 @@ public class Main {
         System.out.println(bob);
 
         Bank bank = new Bank("Chase");
-        bank.addNewCustomer("Jane Austen", 500.0);
+        bank.addNewCustomer("Jane A", 500.0);
         System.out.println(bank);
     }
 }
