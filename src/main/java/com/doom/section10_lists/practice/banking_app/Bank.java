@@ -36,4 +36,26 @@ public class Bank {
             System.out.println("New customer added to the list: " + customer);
         }
     }
+
+    public void addTransaction(String customerName, double amount) {
+        Customer customer = getCustomer(customerName);
+
+        if (customer != null) {
+            customer.transactions().add(amount);
+        }
+    }
+
+    public void printStatement(String customerName) {
+        Customer customer = getCustomer(customerName);
+        if (customer == null) {
+            return;
+        }
+
+        System.out.println("-".repeat(30));
+        System.out.println("Customer Name:" + customer.name());
+        System.out.println("Transactions:");
+        for (double transaction : customer.transactions()) {
+            System.out.printf("$%10.2f (%s)%n", transaction, transaction < 0 ? "debit" : "credit");
+        }
+    }
 }
