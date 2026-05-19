@@ -52,7 +52,7 @@ public class Bank {
         }
 
         System.out.println("-".repeat(30));
-        System.out.println("Customer Name:" + customer.name());
+        System.out.println("Customer name: " + customer.name());
         System.out.println("Transactions:");
         for (double transaction : customer.transactions()) {
             System.out.printf("$%10.2f (%s)%n", transaction, transaction < 0 ? "debit" : "credit");
