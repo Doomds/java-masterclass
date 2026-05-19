@@ -11,15 +11,6 @@ public class Bank {
         this.name = name;
     }
 
-    public void addCustomer(Customer customer) {
-        if (customers.contains(customer)) {
-            System.out.println("Customer already exists");
-        } else {
-            customers.add(customer);
-            System.out.println("customer added to the list");
-        }
-    }
-
     private Customer getCustomer(String customerName) {
         for (Customer customer : customers) {
             if (customer.name().equalsIgnoreCase(customerName)) {
