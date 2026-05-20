@@ -18,14 +18,20 @@ public class Bank {
         return branches.add(new Branch(name));
     }
 
-    public boolean addCustomer(String name) {
+    //TODO
+    public boolean addCustomer(String branchName, String customerName, double initialTransaction) {
         if (findBranch() != null) {
             return false;
         }
-        return branches.add(new Branch(name));
+
+        return true;
     }
 
-    public boolean addCustomerTransaction() {
+    //TODO
+    public boolean addCustomerTransaction(String bankName, String customerName, double transaction) {
+
+        if (findBranch() != null) {}
+
         return false;
     }
 
