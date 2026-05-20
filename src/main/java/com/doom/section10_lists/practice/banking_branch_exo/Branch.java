@@ -27,7 +27,7 @@ public class Branch {
         return addCustomerTransaction(name, transaction);
     }
 
-    public Customer findCustomer(String name) {
+    private Customer findCustomer(String name) {
         for (Customer customer : customers) {
             if (customers.contains(customer)) {
                 return customer;
