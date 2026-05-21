@@ -3,8 +3,8 @@ package com.doom.section10_lists.practice.banking_branch_exo;
 import java.util.ArrayList;
 
 public class Bank {
-    String name;
-    ArrayList<Branch> branches;
+    private String name;
+    private ArrayList<Branch> branches;
 
     public Bank(String name) {
         this.name = name;
@@ -19,27 +19,26 @@ public class Bank {
     }
 
     public boolean addCustomer(String branchName, String customerName, double initialTransaction) {
-        if (findBranch(branchName) != null) {
-            findBranch(branchName).newCustomer(customerName, initialTransaction);
-            return true;
-        }
+        Branch branch = findBranch(branchName);
 
+        if (branch != null) {
+            return branch.newCustomer(customerName, initialTransaction);
+        }
         return false;
     }
 
     public boolean addCustomerTransaction(String branchName, String customerName, double transaction) {
+        Branch branch = findBranch(branchName);
 
-        if (findBranch(branchName) != null) {
-            findBranch(branchName).addCustomerTransaction(customerName, transaction);
-            return true;
+        if (branch != null) {
+            return branch.addCustomerTransaction(customerName, transaction);
         }
-
         return false;
     }
 
     private Branch findBranch(String name) {
         for (Branch branch : branches) {
-            if (branch.name.equals(name)) {
+            if (branch.getName().equals(name)) {
                 return branch;
             }
         }
@@ -47,14 +46,28 @@ public class Bank {
     }
 
     public boolean listCustomers(String branchName, boolean printTransaction) {
-        if (findBranch(branchName) != null) {
-            for (Branch branch : branches) {
-                if (branch.name.equals(branchName)) {
-                    System.out.println(branch.getCustomers());
-                    return true;
+        Branch branch = findBranch(branchName);
+
+        if (branch == null) {
+            return false;
+        }
+
+        System.out.println("Customer details for branch " + branch.getName());
+        ArrayList<Customer> customers = branch.getCustomers();
+
+        for (int i = 0; i < customers.size(); i++) {
+            Customer customer = customers.get(i);
+            System.out.println("Customer: " + customer.getName() + "[" + (i + 1) + "]");
+
+            if (printTransaction) {
+                System.out.println("Transactions");
+                ArrayList<Double> transactions = customer.getTransactions();
+
+                for (int j = 0; j < transactions.size(); j++) {
+                    System.out.println("[" + (j + 1) + "] Amount " + transactions.get(j));
                 }
             }
         }
-        return false;
+        return true;
     }
 }
