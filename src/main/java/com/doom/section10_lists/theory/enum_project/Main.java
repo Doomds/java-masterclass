@@ -11,8 +11,11 @@ public class Main {
         for (int i = 0; i < 10; i++) {
             dow = getRandomDay();
             System.out.printf("Name is %s and ordinal is %s\n",
-                    dow.name(),
-                    dow.ordinal());
+                    dow.name(), dow.ordinal());
+
+            if (dow == DayOfTheWeek.FRI) {
+                System.out.println("Found a Friday !!!!");
+            }
         }
     }
 
