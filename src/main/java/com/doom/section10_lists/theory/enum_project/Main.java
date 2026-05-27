@@ -1,22 +1,31 @@
 package com.doom.section10_lists.theory.enum_project;
 
-import java.time.DayOfWeek;
 import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
 
-        DayOfTheWeek dow = DayOfTheWeek.TUES;
+        DayOfTheWeek dow;
 
         for (int i = 0; i < 10; i++) {
             dow = getRandomDay();
-            System.out.printf("Name is %s and ordinal is %s\n",
-                    dow.name(), dow.ordinal());
+//            System.out.printf("Name is %s and ordinal is %s\n",
+//                    dow.name(), dow.ordinal());
+//
+//            if (dow == DayOfTheWeek.FRI) {
+//                System.out.println("Found a Friday !!!!");
+//            }
 
-            if (dow == DayOfTheWeek.FRI) {
-                System.out.println("Found a Friday !!!!");
-            }
+            switchDay(dow);
         }
+
+        System.out.println("-".repeat(30));
+
+        for (Topping topping : Topping.values()) {
+            System.out.println(topping.name() + " : " + topping.getPrice());
+        }
+
+
     }
 
     public static DayOfTheWeek getRandomDay() {
@@ -36,6 +45,7 @@ public class Main {
             case FRI ->  System.out.println("Friday is Day " +  weekDayInteger);
             case SAT ->  System.out.println("Saturday is Day " +  weekDayInteger);
             case SUN -> System.out.println("Sunday is Day " +  weekDayInteger);
+            default -> System.out.println(dow.name().charAt(0) + dow.name().substring(1).toLowerCase() + "day is Day" + weekDayInteger);
         }
     }
 }
