@@ -2,9 +2,9 @@ package com.doom.section11_abstraction.practice.abstraction_challenge;
 
 public abstract class ProductForSale {
 
-    private String type;
-    private double price;
-    private String description;
+    protected String type;
+    protected double price;
+    protected String description;
 
     public ProductForSale(String type, double price, String description) {
         this.type = type;
