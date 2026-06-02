@@ -74,13 +74,14 @@ public class Store {
             product.showDetails();
         }
 
-        addProductToOrderList(products, orderItems, "Computer", 999.99, 3);
-        addProductToOrderList(products, orderItems, "Computer", 799.99, 5);
-        addProductToOrderList(products, orderItems, "Chair", 329.99, 8);
+        addItemToOrder(products, orderItems, "Computer", 999.99, 3);
+        addItemToOrder(products, orderItems, "Computer", 799.99, 5);
+        addItemToOrder(products, orderItems, "Chair", 329.99, 8);
 
     }
 
-    private static boolean addProductToOrderList(List<ProductForSale> products, List<OrderItem> orderList, String type, double price, int quantity) {
+    private static boolean addItemToOrder(List<ProductForSale> products, List<OrderItem> orderList,
+                                          String type, double price, int quantity) {
         for (ProductForSale product : products) {
             if (product.type.equals(type) && Double.compare(product.price, price) == 0) {
                 OrderItem newItem = new OrderItem(quantity, product);
