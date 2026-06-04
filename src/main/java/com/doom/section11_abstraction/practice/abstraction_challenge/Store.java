@@ -9,8 +9,6 @@ public class Store {
 
     public static void main(String[] args) {
 
-        List<OrderItem> orderItems = new ArrayList<>();
-
         storeProducts.add(new Computer("Computer", 999.99, """
                 Processor: Intel Core i7
                 RAM: 16 Go
@@ -70,11 +68,14 @@ public class Store {
 
         listProducts();
 
-        addItemToOrder(storeProducts, orderItems, "Computer", 999.99, 3);
-        addItemToOrder(storeProducts, orderItems, "Computer", 799.99, 5);
-        addItemToOrder(storeProducts, orderItems, "Chair", 329.99, 8);
+        System.out.println("\nOrder 1");
+        var order1 = new ArrayList<OrderItem>();
 
-        printOrder(orderItems);
+        addItemToOrder(order1, 2, 2);
+        addItemToOrder(order1, 4, 3);
+        addItemToOrder(order1, 8, 100);
+
+        printOrder(order1);
 
     }
 
