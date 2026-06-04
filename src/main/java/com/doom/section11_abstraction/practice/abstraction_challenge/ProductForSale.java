@@ -17,7 +17,7 @@ public abstract class ProductForSale {
     }
 
     public void printPricedItem(int quantity) {
-        System.out.println("Item:" + type + " | Quantity: " + quantity + " | unit price: " + price);
+        System.out.printf("%2d qty at $%8.2f each, %-15s %35s %n", quantity, price, type, description);
     }
 
     public abstract void showDetails();
