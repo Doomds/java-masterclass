@@ -1,12 +1,6 @@
 package com.doom.section11_abstraction.theory.interface_theory;
 
-public class Bird extends Animal implements FlightEnabled, Trackable {
-
-    @Override
-    public void move() {
-        System.out.println("flaps wings");
-    }
-
+public class Jet implements FlightEnabled, Trackable {
     @Override
     public void takeOff() {
         System.out.println(getClass().getSimpleName() + " is taking off");
