@@ -1,12 +1,17 @@
 package com.doom.section11_abstraction.theory.interface_theory;
 
-enum FlightStrages implements Trackable {GROUNDED, LAUNCH, CRUISE, DATA_COLLECTION;
+enum FlightStages implements Trackable {GROUNDED, LAUNCH, CRUISE, DATA_COLLECTION;
 
     @Override
     public void track() {
         if (this != GROUNDED) {
             System.out.println("Monitoring " + this);
         }
+    }
+
+    public FlightStages getNextStage() {
+        FlightStages[] allStages = values();
+        return allStages[(ordinal() + 1) % allStages.length];
     }
 }
 
@@ -54,7 +59,7 @@ interface OrbitEarth extends FlightEnabled {
 }
 
 interface FlightEnabled {
-//    public abstract void takeOff(); // public and abstract modifiers sont redondant. il n'est pas obligatoire de les mettre
+//    public abstract void takeOff(); // public and abstract modifiers sont redondants. Il n'est pas obligatoire de les mettre
 //    abstract void land(); // Abstract aussi est redondant.
 //    void fly(); // C'est la manière qu'on va préférer.
 //    // Les déclarations dans une interface sont automatiquement public et abstract. Pas besoin de les définir.
@@ -65,6 +70,14 @@ interface FlightEnabled {
     void takeOff();
     void land();
     void fly();
+
+    default FlightStages transition(FlightStages stage) {
+//        System.out.println("Transition not implemented on " + getClass().getName());
+//        return null;
+        FlightStages nextStage = stage.getNextStage();
+        System.out.println("Transitioning from " + stage + " to " + nextStage);
+        return nextStage;
+    }
 }
 
 interface Trackable {
