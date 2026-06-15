@@ -14,13 +14,13 @@ public class SearchTree implements NodeList {
     }
 
     @Override
-    public void addItem() {
-
+    public boolean addItem() {
+        return true;
     }
 
     @Override
-    public void removeItem() {
-
+    public boolean removeItem() {
+        return true;
     }
 
     @Override
