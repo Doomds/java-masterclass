@@ -1,7 +1,7 @@
 package com.doom.section11_abstraction.practice.exercice_47;
 
 public interface NodeList {
-    void getRoot();
+    ListItem getRoot();
     void addItem();
     void removeItem();
     void  traverse();
