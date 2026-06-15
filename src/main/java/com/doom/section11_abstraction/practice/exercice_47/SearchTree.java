@@ -14,7 +14,9 @@ public class SearchTree implements NodeList {
     }
 
     @Override
-    public boolean addItem() {
+    public boolean addItem(ListItem item) {
+
+
         return true;
     }
 

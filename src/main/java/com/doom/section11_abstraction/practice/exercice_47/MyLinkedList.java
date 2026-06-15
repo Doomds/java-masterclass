@@ -13,7 +13,12 @@ public class MyLinkedList implements NodeList {
     }
 
     @Override
-    public boolean addItem() {
+    public boolean addItem(ListItem item) {
+
+        if(root == null) {
+            System.out.println("The list is empty");
+        }
+
         return true;
     }
 
@@ -24,6 +29,17 @@ public class MyLinkedList implements NodeList {
 
     @Override
     public void traverse() {
+
+        if(root != null) {
+            System.out.println("list is empty");
+        }
+
+        ListItem current = root;
+
+        while (current != null) {
+            System.out.println(current);
+            current.next();
+        }
 
     }
 }

@@ -1,8 +1,10 @@
 package com.doom.section11_abstraction.practice.exercice_47;
 
+import java.awt.*;
+
 public interface NodeList {
     ListItem getRoot();
-    boolean addItem();
+    boolean addItem(ListItem item);
     boolean removeItem();
     void  traverse();
 }
