@@ -21,7 +21,7 @@ public class SearchTree implements NodeList {
     }
 
     @Override
-    public boolean removeItem() {
+    public boolean removeItem(ListItem item) {
         return true;
     }
 
