@@ -1,7 +1,5 @@
 package com.doom.section11_abstraction.practice.exercice_47;
 
-import java.util.List;
-
 public class MyLinkedList implements NodeList {
     private ListItem root;
 
@@ -60,7 +58,35 @@ public class MyLinkedList implements NodeList {
 
     @Override
     public boolean removeItem(ListItem item) {
-        return true;
+        if (item == null) {
+            return false;
+        }
+
+        ListItem current = this.root;
+        while (current != null) {
+            int comparison = current.compareTo(item);
+
+            if (comparison == 0) {
+                if (current == this.root) {
+                    this.root = current.next();
+                    if (this.root != null) {
+                        this.root.setPrevious(null);
+                    }
+                } else {
+                    current.previous().setNext(current.next());
+
+                    if (current.next() != null) {
+                        current.next().setPrevious(current.previous());
+                    }
+                }
+                return true;
+            } else if (comparison < 0) {
+                current = current.next();
+            } else {
+                return false;
+            }
+        }
+        return false;
     }
 
     @Override
