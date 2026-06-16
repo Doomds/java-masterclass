@@ -6,27 +6,34 @@ public class Node extends ListItem {
     }
 
     @Override
-    void next() {
-
+    ListItem next() {
+        return rightLink;
     }
 
     @Override
-    void setNext() {
-
+    ListItem setNext(ListItem next) {
+        return rightLink = next;
     }
 
     @Override
-    void previous() {
-
+    ListItem previous() {
+        return leftLink;
     }
 
     @Override
-    void setPrevious() {
-
+    ListItem setPrevious(ListItem previous) {
+        return leftLink = previous;
     }
 
     @Override
-    void compareTo() {
+    int compareTo(ListItem item) {
+        if (item != null) {
+            String thisValue = (String) this.getValue();
+            String otherValue = (String) item.getValue();
 
+            return thisValue.compareTo(otherValue);
+        } else {
+            return -1;
+        }
     }
 }

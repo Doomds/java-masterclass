@@ -9,11 +9,11 @@ public abstract class ListItem {
         this.value = value;
     }
 
-    abstract void next();
-    abstract void setNext();
-    abstract void previous();
-    abstract void setPrevious();
-    abstract void compareTo();
+    abstract ListItem next();
+    abstract ListItem setNext(ListItem next);
+    abstract ListItem previous();
+    abstract ListItem setPrevious(ListItem previous);
+    abstract int compareTo(ListItem item);
 
     public Object getValue() {
         return value;
