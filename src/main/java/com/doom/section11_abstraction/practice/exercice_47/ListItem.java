@@ -9,7 +9,7 @@ public abstract class ListItem {
         this.value = value;
     }
 
-    abstract void next();
+    abstract ListItem next();
     abstract void setNext();
     abstract void previous();
     abstract void setPrevious();
