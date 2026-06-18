@@ -27,10 +27,16 @@ public class Player implements ISaveable {
         ));
     }
 
-    // TODO: Finir la méthode read();
     @Override
     public void read(List<String> listOfStrings) {
-
+        if (listOfStrings != null && !listOfStrings.isEmpty()) {
+            this.name = listOfStrings.get(0);
+            this.hitPoints = Integer.parseInt(listOfStrings.get(1));
+            this.strength = Integer.parseInt(listOfStrings.get(2));
+            this.weapon = listOfStrings.get(3);
+        } else {
+            System.out.println("the list is empty");
+        }
     }
 
     // Player{name='Tim', hitPoints=10, strength=15, weapon='Sword'}
