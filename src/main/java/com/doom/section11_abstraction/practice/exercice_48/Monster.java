@@ -35,7 +35,7 @@ public class Monster implements ISaveable {
         }
     }
 
-    // Player{name='Tim', hitPoints=10, strength=15, weapon='Sword'}
+    // Monster{name='Werewolf', hitPoints=20, strength=40}
     @Override
     public String toString() {
         return """
